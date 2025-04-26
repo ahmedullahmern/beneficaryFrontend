@@ -1,62 +1,42 @@
-import React, { useState } from "react";
+import axios from "axios";
+import Cookies from 'js-cookie';
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AppRoutes } from "../../../constant/constant";
+import { toast } from 'react-toastify';
+import { AuthContext } from "../../../context/AuthContext";
+import ButtonLoader from "../../ButtonLoader/ButtonLoader";
 
 const SignupForm = () => {
     const [isLoading, setIsLoading] = useState(false);
-
+    const buttonLoader = ButtonLoader()
     const handleSignup = (e) => {
-        e.preventDefault();
-        setIsLoading(true);
-        // const handleLogin = (e) => {
-        //     //     e.preventDefault()
-        //     //     setIsLoading(true)
-        //     //     const obj = {
-        //     name: e.target.name.value,
-        //         email: e.target.email.value,
-        //             password: e.target.password.value,
-        //                 cnic: e.target.cnic.value
-        // };
-        //     //     axios.post(AppRoutes.login, obj)
-        //     //         .then((res) => {
-        //     //             setIsLoading(false)
-        //     //             // console.log("res in login==>", res?.data?.accessToken)
-        //     //             Cookies.set('accessToken', res?.data?.accessToken)
-        //     //             setUser(res?.data?.user)
-        //     //             const token = Cookies.get('accessToken');
-        //     //             console.log("Token==>", Cookies.get("token"))
-        //     //             console.log("accessToken==>", token)
-        //     //             console.log("URL==>", AppRoutes.getMyInfo)
-        //     //             Swal.fire({
-        //     //                 title: 'Login Successfully!',
-        //     //                 icon: 'success',
-        //     //             })
-        //     //         }).catch((err) => {
-        //     //             setIsLoading(false)
-        //     //             console.log("err in the login=>", err)
-        //     //             // console.log("err in the login=>", err.response.data.message)
-        //     //             const errorMessage = err.response ? err.response.data.message : err.message;
-        //     //             Swal.fire({
-        //     //                 title: 'SomThing Went Wrong!',
-        //     //                 text: errorMessage,
-        //     //                 icon: 'error',
-        //     //             })
-        //     //         })
-        //     // }
+        e.preventDefault()
+        setIsLoading(true)
         const obj = {
             name: e.target.name.value,
             email: e.target.email.value,
             password: e.target.password.value,
-            cnic: e.target.cnic.value
+            cnic: e.target.cnic.value,
         };
-
-        console.log("Signup Data: ", obj); // yahan axios.post lagao
-
-        // Simulate loading
-        setTimeout(() => {
-            setIsLoading(false);
-            alert("Signup successful (dummy response)");
-        }, 2000);
-    };
+        if (!obj.email || !obj.password || !obj.name || !obj.cnic) {
+            setIsLoading(false)
+            toast.warning('All fields are required.');
+            return;
+        }
+        axios.post(AppRoutes.signup, obj)
+            .then((res) => {
+                setIsLoading(false)
+                console.log("res in login==>", res?.data?.data?.user)
+                toast.success("Your Account Created Successfully")
+            }).catch((err) => {
+                setIsLoading(false)
+                console.log("err in the login=>", err)
+                console.log("err in the login=>", err.response.data.msg)
+                const errorMessage = err.response ? err.response.data.msg : err.message;
+                toast.error(errorMessage)
+            })
+    }
 
     return (
         <div className="bg-gray-100 flex flex-col items-center justify-center min-h-screen">
@@ -71,7 +51,7 @@ const SignupForm = () => {
                             Full Name
                         </label>
                         <input
-                            required
+
                             type="text"
                             id="name"
                             name="name"
@@ -86,7 +66,7 @@ const SignupForm = () => {
                             Email Address
                         </label>
                         <input
-                            required
+
                             type="email"
                             id="email"
                             name="email"
@@ -101,7 +81,7 @@ const SignupForm = () => {
                             Password
                         </label>
                         <input
-                            required
+
                             type="password"
                             id="password"
                             name="password"
@@ -116,7 +96,7 @@ const SignupForm = () => {
                             CNIC
                         </label>
                         <input
-                            required
+
                             type="text"
                             id="cnic"
                             name="cnic"
@@ -137,9 +117,9 @@ const SignupForm = () => {
                     <button
                         type="submit"
                         disabled={isLoading}
-                        className="w-full bg-blue-600 text-white py-3 px-4 rounded-md hover:bg-blue-700 focus:ring-2 focus:ring-blue-500"
+                        className="w-full bg-green-600 text-white py-3 px-4 rounded-md hover:bg-green-700 focus:ring-2 focus:ring-green-500"
                     >
-                        {isLoading ? "Signing up..." : "Sign Up"}
+                        {isLoading ? buttonLoader : "Sign Up"}
                     </button>
                 </form>
             </div>
