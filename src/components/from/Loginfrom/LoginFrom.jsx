@@ -5,9 +5,11 @@ import { Link } from "react-router-dom";
 import { AppRoutes } from "../../../constant/constant";
 import { toast } from 'react-toastify';
 import { AuthContext } from "../../../context/AuthContext";
+import ButtonLoader from "../../ButtonLoader/ButtonLoader";
 
 const LoginFrom = () => {
     const [isLoading, setIsLoading] = useState(false);
+    const buttonLoader = ButtonLoader()
     const { setUser } = useContext(AuthContext)
     const handleLogin = (e) => {
         e.preventDefault()
@@ -90,9 +92,9 @@ const LoginFrom = () => {
                     <button
                         type="submit"
                         disabled={isLoading}
-                        className="w-full bg-green-600 text-white py-3 px-4 rounded-md hover:bg-green-700 focus:ring-2 focus:ring-green-500"
+                        className="w-full hover:cursor-pointer bg-green-600 text-white py-3 px-4 rounded-md hover:bg-green-700 focus:ring-2 focus:ring-green-500"
                     >
-                        {isLoading ? "Loading..." : "Sign Up"}
+                        {isLoading ? buttonLoader : "Login"}
                     </button>
                 </form>
             </div>

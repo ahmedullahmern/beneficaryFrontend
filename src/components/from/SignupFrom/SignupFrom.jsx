@@ -117,7 +117,7 @@ const SignupForm = () => {
                     <button
                         type="submit"
                         disabled={isLoading}
-                        className="w-full bg-green-600 text-white py-3 px-4 rounded-md hover:bg-green-700 focus:ring-2 focus:ring-green-500"
+                        className="w-full hover:cursor-pointer bg-green-600 text-white py-3 px-4 rounded-md hover:bg-green-700 focus:ring-2 focus:ring-green-500"
                     >
                         {isLoading ? buttonLoader : "Sign Up"}
                     </button>
