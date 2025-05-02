@@ -1,18 +1,22 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AppRoutes } from "../../../constant/constant";
 import { toast } from 'react-toastify';
 import ButtonLoader from "../../ButtonLoader/ButtonLoader";
+import Cookies from 'js-cookie';
+
 
 const RegisterForm = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [cnic, setCnic] = useState('');
     const [phone, setPhone] = useState('');
 
+    const nav = useNavigate()
     const buttonLoader = ButtonLoader();
 
     // CNIC formatting function
+
     const handleCnicChange = (e) => {
         let value = e.target.value.replace(/\D/g, ''); // Only digits
         if (value.length > 5 && value.length <= 12) {
@@ -34,29 +38,36 @@ const RegisterForm = () => {
 
     const handleRegister = (e) => {
         e.preventDefault();
-        // setIsLoading(true);
+        setIsLoading(true);
+
+        const formattedCnic = cnic.replace(/-/g, ''); // remove dashes
+        const formattedPhone = phone.replace(/-/g, ''); // optional: clean phone too
 
         const obj = {
             name: e.target.name.value,
             email: e.target.email.value,
-            cnic: e.target.cnic.value,
-            phone: e.target.phone.value,
+            cnic: formattedCnic, // clean CNIC
+            phone: formattedPhone, // clean phone (optional)
             address: e.target.address.value,
             purpose: e.target.purpose.value,
         };
-        console.log("obj==>", obj)
+        console.log("obj=>", obj)
 
-        if (!obj.name || !obj.email || !obj.cnic || !obj.phone || !obj.address) {
+        if (!obj.name || !obj.email || !obj.cnic || !obj.phone || !obj.address || !obj.purpose) {
             setIsLoading(false);
             toast.warning('All fields are required.');
             return;
         }
 
-        axios.post(AppRoutes.register, obj)
+        axios.post(AppRoutes.register, obj, {
+            headers: { Authorization: `Bearer ${Cookies.get("token")}` }
+        })
             .then((res) => {
                 setIsLoading(false);
-                console.log("Registration Success:", res?.data?.data?.user);
+                console.log("Registration Success:", res?.data?.data?.token);
                 toast.success("Registration Successfully");
+                const seekerId = res?.data?.data?.newUser?._id;
+                nav(`/seekerDownPage/${seekerId}`)
             })
             .catch((err) => {
                 setIsLoading(false);
@@ -65,6 +76,7 @@ const RegisterForm = () => {
                 toast.error(errorMessage);
             });
     };
+
 
     return (
         <div className="bg-gray-100 flex flex-col items-center justify-center min-h-screen">
@@ -169,14 +181,6 @@ const RegisterForm = () => {
                             <option value="Food">Food</option>
                             <option value="Shelter">Shelter</option>
                         </select>
-                    </div>
-
-                    {/* Login Redirect */}
-                    <div className="text-sm text-center text-gray-600">
-                        Already have an account?{" "}
-                        <Link to="/login" className="text-blue-600 hover:underline">
-                            Login
-                        </Link>
                     </div>
 
                     {/* Submit Button */}

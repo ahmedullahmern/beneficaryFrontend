@@ -1,7 +1,7 @@
 const devUrl = "http://localhost:4000/"
 const proudUrl = "https://beneficary-backend.vercel.app/"
 
-export const Base_Url = proudUrl
+export const Base_Url = devUrl
 
 export const AppRoutes = {
     signup: Base_Url + "auth/register",
@@ -12,4 +12,5 @@ export const AppRoutes = {
     seekerGetByAdmin: Base_Url + "auth/admin/reports",
     seekerSeeMyStatus: Base_Url + "auth/seeker/status/:cnic",
     getMyInfo: Base_Url + "users/myInfo",
+    seekerDownload: Base_Url + "auth/seekerDownload/:id",
 }
