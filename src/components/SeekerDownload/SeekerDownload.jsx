@@ -62,7 +62,6 @@
 
 
 import React, { useEffect, useState } from "react";
-
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { jsPDF } from "jspdf";

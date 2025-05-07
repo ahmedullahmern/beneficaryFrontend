@@ -13,7 +13,7 @@ import SeekerDownlodPage from './pages/SeekerDownPage/SeekerDownPage'
 
 
 function App() {
-  const { user } = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
   console.log("User IN the App==>", user)
 
   const nav = useNavigate()

@@ -1,7 +1,21 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import logo from "../../assets/logo.png"
+import Cookies from "js-cookie"
+import { useContext } from "react"
+import { AuthContext } from "../../context/AuthContext"
 
 function Header() {
+    const token = Cookies.get("token")
+    const { user, setUser } = useContext(AuthContext)
+
+    const nav = useNavigate()
+
+    const handleLogOut = () => {
+        Cookies.remove("token")
+        setUser(null)
+        nav("/")
+    }
+
     return (
         <nav className="bg-white border-gray-200 dark:bg-gray-900">
             <div className="max-w-full shadow flex flex-wrap items-center justify-between mx-auto px-20 p-4">
@@ -16,14 +30,26 @@ function Header() {
                     />
                 </a>
                 <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-                    <Link to={"/login"}>
+                    {user ? (
                         <button
+                            onClick={handleLogOut}
                             type="button"
                             className="text-white  bg-blue-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-black font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                         >
-                            Login
-                        </button>
-                    </Link>
+                            Logout
+                        </button>)
+                        :
+                        (< Link to={"/login"}>
+                            <button
+                                type="button"
+                                className="text-white  bg-blue-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-black font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            >
+                                Login
+                            </button>
+                        </Link>)
+
+
+                    }
                     <button
                         data-collapse-toggle="navbar-cta"
                         type="button"
@@ -90,7 +116,7 @@ function Header() {
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav >
 
     )
 }
