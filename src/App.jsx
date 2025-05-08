@@ -1,6 +1,4 @@
 import { useContext, useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import { BrowserRouter, Link, Route, Routes, useNavigate, } from 'react-router-dom'
 import Ahmed from './ahmed'
@@ -10,17 +8,18 @@ import HomePage from './pages/HomePage/HomePage'
 import RegisterPage from './pages/RegisterPage/RegisterPage'
 import { AuthContext } from './context/AuthContext'
 import SeekerDownlodPage from './pages/SeekerDownPage/SeekerDownPage'
+import PageLoader from './components/Loader/PageLoader'
 
 
 function App() {
-    const { user } = useContext(AuthContext)
+  const { user } = useContext(AuthContext)
   console.log("User IN the App==>", user)
 
   const nav = useNavigate()
 
   useEffect(() => {
     if (user?.role == "admin") {
-      nav("/")
+      nav("/home")
     }
     if (user?.role == "receptionist") {
       nav("/seekerRegister")
@@ -32,8 +31,8 @@ function App() {
 
   return (
     <Routes>
-      <Route path='/' element={<HomePage />} />
-      <Route path='/ahmed' element={<Ahmed />} />
+      <Route path='/' element={<PageLoader />} />
+      <Route path='/home' element={<HomePage />} />
       <Route path='/signup' element={<SignupPage />} />
       <Route path='/login' element={<LoginPage />} />
       <Route path='/seekerRegister' element={<RegisterPage />} />

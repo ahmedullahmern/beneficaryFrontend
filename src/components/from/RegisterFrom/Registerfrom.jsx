@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AppRoutes } from "../../../constant/constant";
 import { toast } from 'react-toastify';
-import ButtonLoader from "../../ButtonLoader/ButtonLoader";
+import ButtonLoader from "../../Loader/ButtonLoader";
 import Cookies from 'js-cookie';
 
 

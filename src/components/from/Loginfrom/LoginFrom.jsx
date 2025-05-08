@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { AppRoutes } from "../../../constant/constant";
 import { toast } from 'react-toastify';
 import { AuthContext } from "../../../context/AuthContext";
-import ButtonLoader from "../../ButtonLoader/ButtonLoader";
+import ButtonLoader from "../../Loader/ButtonLoader";
 
 const LoginFrom = () => {
     const [isLoading, setIsLoading] = useState(false);

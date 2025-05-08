@@ -68,7 +68,7 @@ import { jsPDF } from "jspdf";
 import Cookies from 'js-cookie';
 import { AppRoutes } from "../../constant/constant";
 import logoround from "../../assets/logoround.jpeg"
-import ButtonLoader from "../ButtonLoader/ButtonLoader";
+import ButtonLoader from "../Loader/ButtonLoader";
 import { toast } from 'react-toastify';
 
 

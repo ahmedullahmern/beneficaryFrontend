@@ -8,9 +8,31 @@ export const AuthContext = createContext()
 export default function AuthContextProvider({ children }) {
     const [user, setUser] = useState(null);
 
+    // useEffect(() => {
+    //     if (!user) {
+    //         const token = Cookies.get("token")
+    //         if (token) {
+    //             getUser()
+    //         }
+    //     }
+    // }, [user])
+
+    // const getUser = () => {
+    //     axios.get(AppRoutes.getMyInfo, {
+    //         headers: {
+    //             Authorization: `Bearer ${Cookies.get("token")}`
+    //         }
+    //     }).then((res) => {
+    //         console.log("res In User==>", res)
+    //     }).catch((err) => {
+    //         console.log("Hi Err In User ==>", err)
+    //     })
+    // }
+
+
     useEffect(() => {
         if (!user) {
-            const token = Cookies.get("token")
+            const token = Cookies.get('token')
             if (token) {
                 getUser()
             }
@@ -23,9 +45,10 @@ export default function AuthContextProvider({ children }) {
                 Authorization: `Bearer ${Cookies.get("token")}`
             }
         }).then((res) => {
-            console.log("res In User==>", res)
+            console.log("resInGetUser==>", res)
+            setUser(res?.data?.data)
         }).catch((err) => {
-            console.log("Hi Err In User ==>", err)
+            console.log("errInGetUser==>", err)
         })
     }
 

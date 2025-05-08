@@ -3,6 +3,7 @@ import logo from "../../assets/logo.png"
 import Cookies from "js-cookie"
 import { useContext } from "react"
 import { AuthContext } from "../../context/AuthContext"
+import { toast } from "react-toastify"
 
 function Header() {
     const token = Cookies.get("token")
@@ -12,15 +13,16 @@ function Header() {
 
     const handleLogOut = () => {
         Cookies.remove("token")
+        toast.success("User Logout Successfully")
         setUser(null)
-        nav("/")
+        nav("/home")
     }
 
     return (
         <nav className="bg-white border-gray-200 dark:bg-gray-900">
             <div className="max-w-full shadow flex flex-wrap items-center justify-between mx-auto px-20 p-4">
                 <a
-                    href="/"
+                    href="/home"
                     className="flex items-center space-x-3 rtl:space-x-reverse"
                 >
                     <img
