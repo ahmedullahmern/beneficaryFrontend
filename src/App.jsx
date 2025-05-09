@@ -9,6 +9,7 @@ import RegisterPage from './pages/RegisterPage/RegisterPage'
 import { AuthContext } from './context/AuthContext'
 import SeekerDownlodPage from './pages/SeekerDownPage/SeekerDownPage'
 import PageLoader from './components/Loader/PageLoader'
+import CategoriesCardsPage from './pages/CategoriesCardsPage/CategoriesCardsPage'
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
     <Routes>
       <Route path='/' element={<PageLoader />} />
       <Route path='/home' element={<HomePage />} />
+      <Route path='/cards' element={<CategoriesCardsPage />} />
       <Route path='/signup' element={<SignupPage />} />
       <Route path='/login' element={<LoginPage />} />
       <Route path='/seekerRegister' element={<RegisterPage />} />
