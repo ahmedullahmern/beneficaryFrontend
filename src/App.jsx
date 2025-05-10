@@ -28,6 +28,9 @@ function App() {
     if (user?.role == "beneficiary") {
       nav("/signup")
     }
+    if (user?.role == "department") {
+      nav("/cards")
+    }
   }, [user])
 
   return (
