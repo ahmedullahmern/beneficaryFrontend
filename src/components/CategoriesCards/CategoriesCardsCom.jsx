@@ -2,12 +2,13 @@ import { Link } from "react-router-dom";
 import { AcademicCapIcon, HeartIcon, HomeIcon, PlusIcon, UserIcon } from '@heroicons/react/24/outline';
 
 const categories = [
-    { name: 'Medical', icon: <HeartIcon className="h-6 w-6 text-red-500" /> },
-    { name: 'Education', icon: <AcademicCapIcon className="h-6 w-6 text-blue-500" /> },
-    { name: 'Meat', icon: <PlusIcon className="h-6 w-6 text-yellow-500" /> },
-    { name: 'Food', icon: <HomeIcon className="h-6 w-6 text-green-500" /> },
-    { name: 'Shelter', icon: <UserIcon className="h-6 w-6 text-purple-500" /> },
+    { name: 'Medical', icon: <HeartIcon className="h-6 w-6 text-red-500" />, path: "/department/medical" },
+    { name: 'Education', icon: <AcademicCapIcon className="h-6 w-6 text-blue-500" />, path: "/department/education" },
+    { name: 'Meat', icon: <PlusIcon className="h-6 w-6 text-yellow-500" />, path: "/department/meat" },
+    { name: 'Food', icon: <HomeIcon className="h-6 w-6 text-green-500" />, path: "/department/food" },
+    { name: 'Shelter', icon: <UserIcon className="h-6 w-6 text-purple-500" />, path: "/department/shelter" },
 ];
+
 
 
 export default function CategoryCardComp() {

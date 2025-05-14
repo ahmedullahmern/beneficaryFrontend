@@ -11,6 +11,8 @@ export const AppRoutes = {
     statusUpdateByDepartment: Base_Url + "auth/seeker/:id/status",
     seekerGetByAdmin: Base_Url + "auth/admin/reports",
     seekerSeeMyStatus: Base_Url + "auth/seeker/status/:cnic",
+    DepartmentSeeker: Base_Url + "auth/:dept/seekers",
     getMyInfo: Base_Url + "users/myInfo",
     seekerDownload: Base_Url + "auth/seekerDownload/:id",
+
 }

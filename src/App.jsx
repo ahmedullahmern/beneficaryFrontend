@@ -11,6 +11,7 @@ import SeekerDownlodPage from './pages/SeekerDownPage/SeekerDownPage'
 import PageLoader from './components/Loader/PageLoader'
 import CategoriesCardsPage from './pages/CategoriesCardsPage/CategoriesCardsPage'
 import NotfoundPage from './pages/NotFoundPage/NotFoundPage'
+import DepartmentSeekerPage from './pages/DepartmentSeekerPage/DepartmentSeekerPage'
 
 function App() {
   const { user } = useContext(AuthContext)
@@ -48,6 +49,7 @@ function App() {
           <Route path='/login' element={<LoginPage />} />
           <Route path='/seekerRegister' element={<RegisterPage />} />
           <Route path='/seekerDownPage/:id' element={<SeekerDownlodPage />} />
+          <Route path='/department/:dept' element={<DepartmentSeekerPage />} />
           <Route path='*' element={<NotfoundPage />} />
         </Routes>
       )}
