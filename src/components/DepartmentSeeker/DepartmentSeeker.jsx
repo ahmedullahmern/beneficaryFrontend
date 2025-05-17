@@ -80,16 +80,16 @@ export default function DepartmentSeekersComp() {
         try {
             const res = await axios.put(`http://localhost:4000/auth/seeker/${id}/status`, {
                 status: newStatus
+
             }, {
                 headers: {
                     Authorization: `Bearer ${Cookies.get("token")}`
                 }
             });
-
-            const updatedSeeker = res.data.data;
-            setSeekers(prev =>
-                prev.map(seeker => seeker._id === id ? updatedSeeker : seeker)
-            );
+            toast.success("Status updated successfully");
+            fetchSeekers()
+            // const updatedSeeker = res.data.data;
+            // setSeekers(prev => prev.map((seeker => seeker._id == id ? updatedSeeker : seeker)))
 
         } catch (err) {
             console.error("Status update failed", err);
