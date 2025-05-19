@@ -56,6 +56,7 @@ import { toast } from "react-toastify";
 export default function DepartmentSeekersComp() {
     const { dept } = useParams();
     const [seekers, setSeekers] = useState([]);
+    const [load, setLoad] = useState(false)
 
     const fetchSeekers = async () => {
         try {

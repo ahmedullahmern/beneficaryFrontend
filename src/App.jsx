@@ -12,6 +12,7 @@ import PageLoader from './components/Loader/PageLoader'
 import CategoriesCardsPage from './pages/CategoriesCardsPage/CategoriesCardsPage'
 import NotfoundPage from './pages/NotFoundPage/NotFoundPage'
 import DepartmentSeekerPage from './pages/DepartmentSeekerPage/DepartmentSeekerPage'
+import SeekerStatusPage from './pages/SeekerStatusPage/SeekerStatusPage'
 
 function App() {
   const { user } = useContext(AuthContext)
@@ -33,7 +34,7 @@ function App() {
   useEffect(() => {
     if (user?.role === "admin") nav("/home")
     if (user?.role === "receptionist") nav("/seekerRegister")
-    if (user?.role === "beneficiary") nav("/signup")
+    if (user?.role === "beneficiary") nav("/beneficiaryResult")
     if (user?.role === "department") nav("/cards")
   }, [user])
 
@@ -48,6 +49,7 @@ function App() {
           <Route path='/signup' element={<SignupPage />} />
           <Route path='/login' element={<LoginPage />} />
           <Route path='/seekerRegister' element={<RegisterPage />} />
+          <Route path='/beneficiaryResult' element={<SeekerStatusPage />} />
           <Route path='/seekerDownPage/:id' element={<SeekerDownlodPage />} />
           <Route path='/department/:dept' element={<DepartmentSeekerPage />} />
           <Route path='*' element={<NotfoundPage />} />
