@@ -53,10 +53,10 @@ import axios from "axios";
 import Cookies from 'js-cookie';
 import { toast } from "react-toastify";
 
+
 export default function DepartmentSeekersComp() {
     const { dept } = useParams();
     const [seekers, setSeekers] = useState([]);
-    const [load, setLoad] = useState(false)
 
     const fetchSeekers = async () => {
         try {
@@ -124,12 +124,13 @@ export default function DepartmentSeekersComp() {
                             </p>
 
                             <div className="mt-4 flex gap-2">
-                                <button
+                                < button
                                     onClick={() => updateStatus(seeker._id, "inprocess")}
                                     className="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded"
                                 >
                                     Inprocess
                                 </button>
+
                                 <button
                                     onClick={() => updateStatus(seeker._id, "completed")}
                                     className="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded"
@@ -140,7 +141,8 @@ export default function DepartmentSeekersComp() {
                         </div>
                     ))}
                 </div>
-            )}
-        </div>
+            )
+            }
+        </div >
     );
 }

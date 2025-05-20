@@ -41,7 +41,7 @@ function App() {
   return (
     <>
       {loader ? (
-        <PageLoader />
+        <PageLoader center />
       ) : (
         <Routes>
           <Route path='/home' element={<HomePage />} />
