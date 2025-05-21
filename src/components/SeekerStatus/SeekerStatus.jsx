@@ -75,7 +75,7 @@ function SeekerStatusComp() {
                         <p><strong>Name:</strong> {seeker.name}</p>
                         <p><strong>CNIC:</strong> {seeker.cnic}</p>
                         <p><strong>Status:</strong>
-                            <span className={`ml-2 px-2 py-1 rounded  text-black text-sm font-medium
+                            <span className={`ml-2 px-2 py-1 rounded  text-white text-sm font-medium
                             ${seeker.status === 'pending' ? 'bg-gray-400' :
                                     seeker.status === 'inprocess' ? 'bg-yellow-500' :
                                         'bg-green-600'
