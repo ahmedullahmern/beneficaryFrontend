@@ -32,7 +32,7 @@ function App() {
 
   // Role-based navigation
   useEffect(() => {
-    if (user?.role === "admin") nav("/home")
+    if (user?.role === "admin") nav("/")
     if (user?.role === "receptionist") nav("/seekerRegister")
     if (user?.role === "beneficiary") nav("/beneficiaryResult")
     if (user?.role === "department") nav("/cards")
@@ -44,7 +44,7 @@ function App() {
         <PageLoader center />
       ) : (
         <Routes>
-          <Route path='/home' element={<HomePage />} />
+          <Route path='/' element={<HomePage />} />
           <Route path='/cards' element={<CategoriesCardsPage />} />
           <Route path='/signup' element={<SignupPage />} />
           <Route path='/login' element={<LoginPage />} />
@@ -60,54 +60,3 @@ function App() {
 }
 
 export default App
-
-
-
-
-// function App() {
-//   const { user, authLoading } = useContext(AuthContext)
-//   const { loader, setLoader } = useContext(LoaderContext)
-//   const nav = useNavigate()
-//   const location = useLocation()
-
-//   // Route change loader
-//   useEffect(() => {
-//     setLoader(true)
-//     const timer = setTimeout(() => {
-//       setLoader(false)
-//     }, 700)
-//     return () => clearTimeout(timer)
-//   }, [location])
-
-//   // Redirect user based on role, after auth is loaded
-//   useEffect(() => {
-//     if (!authLoading) {
-//       if (user?.role === "admin") nav("/home")
-//       else if (user?.role === "receptionist") nav("/seekerRegister")
-//       else if (user?.role === "beneficiary") nav("/beneficiaryResult")
-//       else if (user?.role === "department") nav("/cards")
-//     }
-//   }, [user, authLoading])
-
-//   if (authLoading) return <PageLoader center /> // 👈 auth data araha hai
-
-//   return (
-//     <>
-//       {loader ? (
-//         <PageLoader center />
-//       ) : (
-//         <Routes>
-//           <Route path='/home' element={<HomePage />} />
-//           <Route path='/cards' element={<CategoriesCardsPage />} />
-//           <Route path='/signup' element={<SignupPage />} />
-//           <Route path='/login' element={<LoginPage />} />
-//           <Route path='/seekerRegister' element={<RegisterPage />} />
-//           <Route path='/beneficiaryResult' element={<SeekerStatusPage />} />
-//           <Route path='/seekerDownPage/:id' element={<SeekerDownlodPage />} />
-//           <Route path='/department/:dept' element={<DepartmentSeekerPage />} />
-//           <Route path='*' element={<NotfoundPage />} />
-//         </Routes>
-//       )}
-//     </>
-//   )
-// }

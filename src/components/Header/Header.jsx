@@ -15,7 +15,7 @@ function Header() {
         Cookies.remove("token")
         toast.success("User Logout Successfully")
         setUser(null)
-        nav("/home")
+        nav("/")
     }
 
     return (
