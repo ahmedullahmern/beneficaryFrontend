@@ -5,6 +5,7 @@ export const Base_Url = devUrl
 
 export const AppRoutes = {
     signup: Base_Url + "auth/register",
+    createStaff: Base_Url + "auth/register/admin",
     login: Base_Url + "auth/login",
     register: Base_Url + "auth/seekerRegister",
     seekerGetByDepartment: Base_Url + "auth/seeker/:id",

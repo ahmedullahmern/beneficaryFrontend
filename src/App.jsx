@@ -14,6 +14,7 @@ import NotfoundPage from './pages/NotFoundPage/NotFoundPage'
 import DepartmentSeekerPage from './pages/DepartmentSeekerPage/DepartmentSeekerPage'
 import SeekerStatusPage from './pages/SeekerStatusPage/SeekerStatusPage'
 import CreateStaffPage from './pages/CreateStaffPage/CreateStaffPage'
+import AdminPanelPage from './pages/AdminPanelPage/AdminPanelPage'
 
 function App() {
   const { user } = useContext(AuthContext)
@@ -48,6 +49,7 @@ function App() {
           <Route path='/' element={<HomePage />} />
           <Route path='/cards' element={<CategoriesCardsPage />} />
           <Route path='/signup' element={<SignupPage />} />
+          {/* <Route path='/AdminPanel' element={<AdminPanelPage />} /> */}
           <Route path='/CreateStaff' element={<CreateStaffPage />} />
           <Route path='/login' element={<LoginPage />} />
           <Route path='/seekerRegister' element={<RegisterPage />} />

@@ -18,14 +18,16 @@ const CreateStaffFrom = () => {
             email: e.target.email.value,
             password: e.target.password.value,
             cnic: e.target.cnic.value,
-            role: e.target.role.value,
+            role: e.target.q.value,
         };
         if (!obj.email || !obj.password || !obj.name || !obj.cnic || !obj.role) {
             setIsLoading(false)
             toast.warning('All fields are required.');
             return;
         }
-        axios.post(AppRoutes.signup, obj)
+        axios.post(AppRoutes.createStaff, obj, {
+            headers: { Authorization: `Bearer ${Cookies.get("token")}`}
+        })
             .then((res) => {
                 setIsLoading(false)
                 console.log("res in login==>", res?.data?.data?.user)
