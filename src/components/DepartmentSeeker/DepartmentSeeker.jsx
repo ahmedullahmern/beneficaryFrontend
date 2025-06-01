@@ -60,7 +60,7 @@ export default function DepartmentSeekersComp() {
 
     const fetchSeekers = async () => {
         try {
-            const res = await axios.get(`http://localhost:4000/auth/${dept}/seekers`, {
+            const res = await axios.get(`https://beneficary-backend.vercel.app/auth/${dept}/seekers`, {
                 headers: {
                     Authorization: `Bearer ${Cookies.get("token")}`
                 }
@@ -79,7 +79,7 @@ export default function DepartmentSeekersComp() {
 
     const updateStatus = async (id, newStatus) => {
         try {
-            const res = await axios.put(`http://localhost:4000/auth/seeker/${id}/status`, {
+            const res = await axios.put(`https://beneficary-backend.vercel.app/auth/seeker/${id}/status`, {
                 status: newStatus
 
             }, {

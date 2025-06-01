@@ -16,7 +16,7 @@ function SeekerStatusComp() {
                 return;
             } setIsLoader(true)
             setSeeker(null)
-            const res = await axios.get(`http://localhost:4000/auth/seeker/status/${cnic}`, {
+            const res = await axios.get(`https://beneficary-backend.vercel.app/auth/seeker/status/${cnic}`, {
                 headers: {
                     Authorization: `Bearer ${Cookies.get("token")}`
                 }

@@ -34,7 +34,7 @@ function App() {
 
   // Role-based navigation
   useEffect(() => {
-    if (user?.role === "admin") nav("/CreateStaff")
+    if (user?.role === "admin") nav("/AdminPanel")
     if (user?.role === "receptionist") nav("/seekerRegister")
     if (user?.role === "beneficiary") nav("/beneficiaryResult")
     if (user?.role === "department") nav("/cards")
@@ -49,7 +49,7 @@ function App() {
           <Route path='/' element={<HomePage />} />
           <Route path='/cards' element={<CategoriesCardsPage />} />
           <Route path='/signup' element={<SignupPage />} />
-          {/* <Route path='/AdminPanel' element={<AdminPanelPage />} /> */}
+          <Route path='/AdminPanel' element={<AdminPanelPage />} />
           <Route path='/CreateStaff' element={<CreateStaffPage />} />
           <Route path='/login' element={<LoginPage />} />
           <Route path='/seekerRegister' element={<RegisterPage />} />

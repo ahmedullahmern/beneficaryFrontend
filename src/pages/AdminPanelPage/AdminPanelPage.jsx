@@ -1,9 +1,9 @@
-// import AdminPanelComp from "../../components/AdminPanel/AdminPanel"
+import AdminPanelComp from "../../components/AdminPanel/AdminPanel"
 
-// function AdminPanelPage() {
-//     return (
-//         <AdminPanelComp />
-//     )
-// }
+function AdminPanelPage() {
+    return (
+        <AdminPanelComp />
+    )
+}
 
-// export default AdminPanelPage
+export default AdminPanelPage
