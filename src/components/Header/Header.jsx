@@ -11,6 +11,10 @@ function Header() {
 
     const nav = useNavigate()
 
+    if (user && user.role === "admin") {
+        return null;
+    }
+
     const handleLogOut = () => {
         Cookies.remove("token")
         toast.success("User Logout Successfully")
